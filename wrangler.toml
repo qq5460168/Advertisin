@@ -1,0 +1,5 @@
+name = "advertisin-static"
+compatibility_date = "2025-06-21"
+
+[assets]
+directory = "./"
