@@ -4,71 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>酷安大神广告过滤规则推荐</title>
+    <meta name="description" content="精选酷安社区实用广告过滤规则，提升浏览体验，支持 AdGuard、乘风插件等主流广告拦截工具。">
+    <meta name="keywords" content="酷安, 广告过滤, 规则, AdGuard, 乘风插件, hosts">
     <style>
         :root {
             --primary-color: #3498db;
             --secondary-color: #2ecc71;
             --bg-color: #f9f9f9;
             --text-color: #333;
-            --card-bg: #ffffff;
+            --card-bg: #fff;
             --border-color: #e0e0e0;
             --hover-color: #f0f0f0;
             --success-color: #27ae60;
             --error-color: #e74c3c;
         }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
         }
-        
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
             padding: 15px;
         }
-        
         .container {
             max-width: 600px;
             margin: 0 auto;
         }
-        
         header {
             text-align: center;
             margin-bottom: 25px;
             padding-bottom: 15px;
             border-bottom: 1px solid var(--border-color);
         }
-        
         h1 {
             color: var(--primary-color);
             font-size: 24px;
             margin-bottom: 10px;
         }
-        
         .subtitle {
             color: #666;
             font-size: 14px;
         }
-        
         .card {
             background-color: var(--card-bg);
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             padding: 20px;
             margin-bottom: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
         }
-        
         .card:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             background-color: var(--hover-color);
         }
-        
         .card-title {
             font-size: 18px;
             font-weight: bold;
@@ -77,38 +70,33 @@
             display: flex;
             align-items: center;
         }
-        
         .card-title i {
             margin-right: 8px;
             color: var(--secondary-color);
         }
-        
         .rule-link {
             display: block;
             background-color: var(--primary-color);
-            color: white;
+            color: #fff;
             text-align: center;
             padding: 10px 15px;
             border-radius: 4px;
             text-decoration: none;
             margin-top: 15px;
             font-size: 14px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s;
             cursor: pointer;
+            user-select: none;
         }
-        
-        .rule-link:hover {
+        .rule-link:hover:not(.copied):not(.error) {
             background-color: #2980b9;
         }
-        
         .rule-link.copied {
             background-color: var(--success-color);
         }
-        
         .rule-link.error {
             background-color: var(--error-color);
         }
-        
         .footer {
             text-align: center;
             margin-top: 30px;
@@ -117,7 +105,6 @@
             color: #888;
             font-size: 13px;
         }
-        
         .note {
             background-color: #f8f8f8;
             border-left: 3px solid var(--secondary-color);
@@ -126,35 +113,32 @@
             border-radius: 0 4px 4px 0;
             font-size: 14px;
         }
-        
         .note-title {
             font-weight: bold;
             color: var(--secondary-color);
             margin-bottom: 5px;
         }
-        
         .toast {
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             background-color: rgba(0, 0, 0, 0.7);
-            color: white;
+            color: #fff;
             padding: 10px 15px;
             border-radius: 4px;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s;
             z-index: 100;
+            pointer-events: none;
         }
-        
         .toast.show {
             opacity: 1;
+            pointer-events: auto;
         }
-        
         .toast.success {
             background-color: var(--success-color);
         }
-        
         .toast.error {
             background-color: var(--error-color);
         }
@@ -166,211 +150,114 @@
             <h1>酷安大神广告过滤规则推荐</h1>
             <p class="subtitle">精选酷安社区实用广告过滤规则，提升浏览体验</p>
         </header>
-        
         <div class="note">
             <div class="note-title">使用提示</div>
-            <p>点击按钮复制链接，部分规则需配合广告拦截工具（如AdGuard、乘风插件等）使用</p>
+            <p>点击按钮复制链接，部分规则需配合广告拦截工具（如 AdGuard、乘风插件等）使用</p>
         </div>
-        
+
         <div class="card">
             <h2 class="card-title">不是DD啊</h2>
             <p>高效的广告过滤规则，持续更新中</p>
             <a href="https://raw.githubusercontent.com/afwfv/DD-AD/main/rule/DD-AD.txt" class="rule-link" data-url="https://raw.githubusercontent.com/afwfv/DD-AD/main/rule/DD-AD.txt">点击复制链接</a>
         </div>
-        
         <div class="card">
             <h2 class="card-title">大萌主</h2>
             <p>专注于界面广告拦截的实用规则</p>
             <a href="https://raw.githubusercontent.com/damengzhu/banad/main/jiekouAD.txt" class="rule-link" data-url="https://raw.githubusercontent.com/damengzhu/banad/main/jiekouAD.txt">点击复制链接</a>
         </div>
-        
         <div class="card">
             <h2 class="card-title">海哥改</h2>
             <p>经过优化的广告过滤方案，兼容性强</p>
             <a href="https://raw.githubusercontent.com/2771936993/HG/main/hg1.txt" class="rule-link" data-url="https://raw.githubusercontent.com/2771936993/HG/main/hg1.txt">点击复制链接</a>
         </div>
-        
         <div class="card">
             <h2 class="card-title">逆向涉猎</h2>
             <p>针对多种应用的广告黑名单规则</p>
             <a href="https://raw.githubusercontent.com/790953214/qy-Ads-Rule/refs/heads/main/black.txt" class="rule-link" data-url="https://raw.githubusercontent.com/790953214/qy-Ads-Rule/refs/heads/main/black.txt">点击复制链接</a>
         </div>
-        
         <div class="card">
             <h2 class="card-title">下个ID见</h2>
-            <p>专注于社交媒体广告拦截的hosts规则</p>
+            <p>专注于社交媒体广告拦截的 hosts 规则</p>
             <a href="https://raw.githubusercontent.com/2Gardon/SM-Ad-FuckU-hosts/refs/heads/master/SMAdHosts" class="rule-link" data-url="https://raw.githubusercontent.com/2Gardon/SM-Ad-FuckU-hosts/refs/heads/master/SMAdHosts">点击复制链接</a>
         </div>
-        
         <div class="card">
             <h2 class="card-title">那个谁520</h2>
             <p>多功能广告过滤规则集合</p>
-            <!-- 修复了链接格式问题 -->
             <a href="https://raw.githubusercontent.com/qq5460168/666/refs/heads/master/rules.txt" class="rule-link" data-url="https://raw.githubusercontent.com/qq5460168/666/refs/heads/master/rules.txt">点击复制链接</a>
         </div>
-        
+
         <footer class="footer">
             <p>规则来源：酷安社区大神分享 | 最后更新：2025年6月22日</p>
             <p>请注意规则使用条款，尊重原作者劳动成果</p>
         </footer>
     </div>
-    
-    <div class="toast" id="toast">链接已复制到剪贴板</div>
-
+    <div class="toast" id="toast"></div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const ruleLinks = document.querySelectorAll('.rule-link');
-            const toast = document.getElementById('toast');
-            
-            ruleLinks.forEach(link => {
-                link.addEventListener('click', async function(e) {
-                    e.preventDefault();
-                    
-                    const url = this.getAttribute('data-url');
-                    
-                    // 显示正在检查链接
-                    showToast('正在检查链接有效性...', 'info');
-                    
-                    // 验证链接 - 改为获取内容的前100个字符
-                    try {
-                        const response = await fetch(url);
-                        
-                        if (response.ok) {
-                            // 读取前100个字符来确认内容存在
-                            const text = await response.text();
-                            if (text.length > 0) {
-                                // 链接有效，执行复制
-                                copyUrl(url, this);
-                            } else {
-                                // 文件为空，可能有问题
-                                handleInvalidUrl(this, url, '文件内容为空');
-                            }
-                        } else {
-                            // 链接无效，提示用户
-                            handleInvalidUrl(this, url, `HTTP错误 ${response.status}`);
-                        }
-                    } catch (error) {
-                        // 网络错误或其他问题
-                        console.error('验证链接时出错:', error);
-                        handleInvalidUrl(this, url, '网络错误或链接不存在');
+    document.addEventListener('DOMContentLoaded', () => {
+        const ruleLinks = document.querySelectorAll('.rule-link');
+        const toast = document.getElementById('toast');
+        const COPY_TEXT = '点击复制链接';
+        const SUCCESS_TEXT = '复制成功';
+        const ERROR_TEXT = '链接可能失效';
+
+        ruleLinks.forEach(link => {
+            link.addEventListener('click', async function(e) {
+                e.preventDefault();
+                const url = this.dataset.url;
+                showToast('正在检查链接有效性...');
+                try {
+                    const response = await fetch(url);
+                    const text = await response.text();
+                    if (response.ok && text.length > 0) {
+                        await copyToClipboard(url);
+                        showCopyFeedback(this, SUCCESS_TEXT, 'copied');
+                        showToast('链接已复制到剪贴板', 'success');
+                    } else {
+                        showCopyFeedback(this, ERROR_TEXT, 'error', url);
+                        showToast('链接可能已失效，请谨慎使用', 'error');
                     }
-                });
+                } catch {
+                    showCopyFeedback(this, ERROR_TEXT, 'error', url);
+                    showToast('网络错误或链接不存在', 'error');
+                }
             });
-            
-            function copyUrl(url, element) {
-                // 尝试使用现代API复制
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(url)
-                        .then(() => {
-                            showCopySuccess(element);
-                        })
-                        .catch(err => {
-                            console.error('现代API复制失败，尝试备用方法: ', err);
-                            fallbackCopyTextToClipboard(url, element);
-                        });
-                } else {
-                    // 旧浏览器的备用方法
-                    fallbackCopyTextToClipboard(url, element);
-                }
+        });
+
+        function showCopyFeedback(element, text, statusClass, url = '') {
+            element.textContent = text;
+            element.classList.add(statusClass);
+            if (statusClass === 'error' && url) {
+                element.title = `手动复制: ${url}`;
             }
-            
-            function showCopySuccess(element) {
-                // 显示复制成功提示
-                showToast('链接已复制到剪贴板', 'success');
-                
-                // 改变按钮样式
-                element.textContent = '复制成功';
-                element.classList.add('copied');
-                
-                // 3秒后恢复原状
-                setTimeout(() => {
-                    element.textContent = '点击复制链接';
-                    element.classList.remove('copied');
-                }, 3000);
-            }
-            
-            function handleInvalidUrl(element, url, errorMsg = '链接可能已失效') {
-                // 显示错误提示
-                showToast(`${errorMsg}，请谨慎使用`, 'error');
-                
-                // 改变按钮样式
-                element.textContent = '链接可能失效';
-                element.classList.add('error');
-                
-                // 提供备用方案
-                const备用方案 = `手动复制: ${url}`;
-                element.setAttribute('title', 备用方案);
-                
-                // 5秒后恢复原状
-                setTimeout(() => {
-                    element.textContent = '点击复制链接';
-                    element.classList.remove('error');
-                }, 5000);
-            }
-            
-            function showToast(message, type = 'info') {
-                toast.textContent = message;
-                toast.classList.add('show');
-                
-                // 添加类型样式
-                if (type === 'success') {
-                    toast.classList.add('success');
-                    toast.classList.remove('error');
-                } else if (type === 'error') {
-                    toast.classList.add('error');
-                    toast.classList.remove('success');
-                } else {
-                    toast.classList.remove('success', 'error');
-                }
-                
-                // 自动隐藏
-                setTimeout(() => {
-                    toast.classList.remove('show', 'success', 'error');
-                }, 3000);
-            }
-            
-            function fallbackCopyTextToClipboard(text, element) {
-                // 创建临时文本域
+            setTimeout(() => {
+                element.textContent = COPY_TEXT;
+                element.classList.remove(statusClass);
+                element.removeAttribute('title');
+            }, statusClass === 'error' ? 5000 : 3000);
+        }
+
+        async function copyToClipboard(text) {
+            if (navigator.clipboard) {
+                return navigator.clipboard.writeText(text);
+            } else {
+                // fallback
                 const textArea = document.createElement("textarea");
                 textArea.value = text;
-                
-                // 使其不在视窗内但能被访问
-                textArea.style.position = "fixed";
-                textArea.style.opacity = "0";
-                
                 document.body.appendChild(textArea);
-                textArea.focus();
                 textArea.select();
-                
-                try {
-                    const successful = document.execCommand('copy');
-                    if (successful) {
-                        showCopySuccess(element);
-                    } else {
-                        handleCopyError(element);
-                    }
-                } catch (err) {
-                    handleCopyError(element);
-                }
-                
+                document.execCommand('copy');
                 document.body.removeChild(textArea);
             }
-            
-            function handleCopyError(element) {
-                console.error('复制失败');
-                showToast('复制失败，请手动复制', 'error');
-                
-                // 改变按钮样式
-                element.textContent = '复制失败';
-                element.classList.add('error');
-                
-                // 3秒后恢复原状
-                setTimeout(() => {
-                    element.textContent = '点击复制链接';
-                    element.classList.remove('error');
-                }, 3000);
-            }
-        });
+        }
+
+        function showToast(message, type = '') {
+            toast.textContent = message;
+            toast.className = 'toast show' + (type ? ' ' + type : '');
+            setTimeout(() => {
+                toast.className = 'toast';
+            }, 3000);
+        }
+    });
     </script>
 </body>
 </html>
