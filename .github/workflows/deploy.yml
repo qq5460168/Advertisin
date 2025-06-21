@@ -3,7 +3,7 @@ name: Deploy to Cloudflare Workers
 on:
   push:
     branches:
-      - main  # 主分支更新时触发部署
+      - main
 
 jobs:
   deploy:
@@ -16,15 +16,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      # 有 package-lock.json 时才使用 npm ci，否则用 npm install
-      - name: Install dependencies
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
 
       - name: Install wrangler globally
         run: npm install -g wrangler
