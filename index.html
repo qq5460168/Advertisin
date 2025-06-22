@@ -243,7 +243,7 @@
                 try {
                     document.execCommand('copy');
                 } catch (err) {
-                    throw new Error('复制失败，可能浏览器不支持或被安全策略阻止');
+                    throw new Error('复制失败');
                 }
                 document.body.removeChild(textArea);
             }
@@ -257,7 +257,7 @@
             }, 3000);
         }
 
-        // 新增：自动弹出对话框，便于Alook和其它不兼容的浏览器手动复制
+        // 优化Alook兼容性：弹窗让用户手动复制
         function showManualCopyPrompt(url) {
             if (typeof window.prompt === 'function') {
                 window.prompt('你的浏览器不支持自动复制，请手动复制下方链接', url);
