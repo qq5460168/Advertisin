@@ -229,15 +229,21 @@
         }
 
         async function copyToClipboard(text) {
-            if (navigator.clipboard) {
+            if (navigator.clipboard && window.isSecureContext) {
                 return navigator.clipboard.writeText(text);
             } else {
-                // fallback
                 const textArea = document.createElement("textarea");
                 textArea.value = text;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
                 document.body.appendChild(textArea);
+                textArea.focus();
                 textArea.select();
-                document.execCommand('copy');
+                try {
+                    document.execCommand('copy');
+                } catch (err) {
+                    throw new Error('复制失败，可能浏览器不支持或被安全策略阻止');
+                }
                 document.body.removeChild(textArea);
             }
         }
