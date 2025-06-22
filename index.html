@@ -198,27 +198,19 @@
         const toast = document.getElementById('toast');
         const COPY_TEXT = '点击复制链接';
         const SUCCESS_TEXT = '复制成功';
-        const ERROR_TEXT = '链接可能失效';
+        const ERROR_TEXT = '复制失败';
 
         ruleLinks.forEach(link => {
             link.addEventListener('click', async function(e) {
                 e.preventDefault();
                 const url = this.dataset.url;
-                showToast('正在检查链接有效性...');
                 try {
-                    const response = await fetch(url);
-                    const text = await response.text();
-                    if (response.ok && text.length > 0) {
-                        await copyToClipboard(url);
-                        showCopyFeedback(this, SUCCESS_TEXT, 'copied');
-                        showToast('链接已复制到剪贴板', 'success');
-                    } else {
-                        showCopyFeedback(this, ERROR_TEXT, 'error', url);
-                        showToast('链接可能已失效，请谨慎使用', 'error');
-                    }
+                    await copyToClipboard(url);
+                    showCopyFeedback(this, SUCCESS_TEXT, 'copied');
+                    showToast('链接已复制到剪贴板', 'success');
                 } catch {
                     showCopyFeedback(this, ERROR_TEXT, 'error', url);
-                    showToast('网络错误或链接不存在', 'error');
+                    showToast('复制失败，请手动复制', 'error');
                 }
             });
         });
