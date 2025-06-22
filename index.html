@@ -210,7 +210,7 @@
                     showToast('链接已复制到剪贴板', 'success');
                 } catch {
                     showCopyFeedback(this, ERROR_TEXT, 'error', url);
-                    showToast('复制失败，请手动复制', 'error');
+                    showManualCopyPrompt(url);
                 }
             });
         });
@@ -228,7 +228,6 @@
             }, statusClass === 'error' ? 5000 : 3000);
         }
 
-        // 兼容性最佳的复制实现
         async function copyToClipboard(text) {
             if (navigator.clipboard && window.isSecureContext) {
                 return navigator.clipboard.writeText(text);
@@ -256,6 +255,15 @@
             setTimeout(() => {
                 toast.className = 'toast';
             }, 3000);
+        }
+
+        // 新增：自动弹出对话框，便于Alook和其它不兼容的浏览器手动复制
+        function showManualCopyPrompt(url) {
+            if (typeof window.prompt === 'function') {
+                window.prompt('你的浏览器不支持自动复制，请手动复制下方链接', url);
+            } else {
+                alert('你的浏览器不支持自动复制，请手动复制链接：\n' + url);
+            }
         }
     });
     </script>
